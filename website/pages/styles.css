@@ -1,0 +1,166 @@
+html, body {
+	margin-block: 0;
+}
+
+body {
+	font-family: sans-serif;
+
+	/* some padding on the sides of the page */
+	padding-inline: 10%;
+}
+
+header nav {
+	background-color: #224;
+
+	line-height: 200%;
+	text-align: center;
+
+	box-shadow: 0 0 8px black;
+	border-radius: 8px;
+}
+
+header nav a {
+	padding-inline: 10%;
+	padding-block: 0.3%;
+
+	color: white;
+
+	/* remove underline from button */
+	text-decoration: none;
+}
+
+header nav a:hover {
+	border: 2px solid white;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+
+.center {
+	text-align: center;
+}
+
+#jump {
+	width: 10%;
+	padding: 1%;
+	margin: 1%;
+
+	box-shadow: 0 0 4px black;
+	border-radius: 8px;
+
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	
+	text-align: center;
+
+	background-color: #224;
+}
+
+#jump:hover {
+	border: 2px solid white;
+}
+
+#jump a {
+	padding-inline: 24.5%;
+	padding-block: 10%;
+	color: white;
+
+	/* remove underline from button */
+	text-decoration: none;
+}
+
+p {
+	/* used for more text-heavy pages */
+	text-align: justify;
+}
+
+img {
+	margin-inline: 5%;
+}
+
+hr {
+	/* make horizontal rule lighter */
+	color: #fff;
+
+	/* more vertical spacing between elements */
+	margin-block: 2%;
+}
+
+.cover {
+	float: left;
+	width: 18vw;
+}
+
+#buy {
+	display: inline-block;
+	text-align: center;
+	float: right;
+
+	border: 2px solid black;
+	border-radius: 16px;
+
+	padding: 1%;
+	margin: 1%;
+}
+
+#buy p {
+	text-align: center;
+}
+
+#reviews {
+	background-color: #eee;
+	padding: 2%;
+	border-radius: 8px;
+}
+
+.review {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 2%;
+	margin: 2%;
+}
+
+table {
+	width: 80%;
+	margin-inline: auto;
+	border-collapse: collapse;
+}
+
+table, th, td {
+	padding: 1%;
+	text-align: center;
+}
+
+thead {
+	background-color: #aac;
+}
+
+tbody tr:hover {
+	background-color: #ffc;
+}
+
+caption {
+	text-decoration: underline;
+	margin: 1%;
+}
+
+col {
+	border: 1px solid black;
+}
+
+button, input[type=submit] {
+	margin: 10%;
+}
+
+button {
+	padding-inline: 2%;
+	padding-block: 0.5%;
+}
+
+input[type=submit] {
+	width: 20%;
+	padding: 1%;
+}

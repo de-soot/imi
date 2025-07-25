@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>BookShop - Pay</title>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="../media/favicon.avif"/>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+	</head>
+
+	<body>
+		<header id="top">
+			<nav>
+				<a href="index.html">HOME</a>
+				<a href="about.html">ABOUT</a>
+				<a href="cart.html">CART</a>
+			</nav>
+		</header>
+
+		<nav id="jump">
+			<a href="#top">Jump to Top</a>
+		</nav>
+
+		<main>
+			<article>
+				<h1 class="center">Payment</h1>
+
+				<form method="post" onsubmit="paySuccess();">
+					<fieldset>
+						<legend>Personal Details</legend>
+
+						<p>Surname</p>
+						<input type="text" name="sname">
+						<p>Given Name</p>
+						<input type="text" name="gname">
+					</fieldset>
+
+					<fieldset>
+						<legend>Address Details</legend>
+						<p>Region</p>
+						<select>
+							<option>North</option>
+							<option>South</option>
+							<option>East</option>
+							<option>West</option>
+						</select>
+					</fieldset>
+
+					<fieldset>
+						<legend>Payment Details</legend>
+					</fieldset>
+
+					<div class="center"><input type="submit" value="Submit"></div>
+				</form>
+			</article>
+		</main>
+	</body>
+</html>

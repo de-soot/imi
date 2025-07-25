@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>BookShop - Cart</title>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="../media/favicon.avif"/>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<script src="app.js" async defer></script>
+
+		<style>
+		img {
+			height: 16vh;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header id="top">
+			<nav>
+				<a href="index.html">HOME</a>
+				<a href="about.html">ABOUT</a>
+				<a href="cart.html">CART</a>
+			</nav>
+		</header>
+
+		<nav id="jump">
+			<a href="#top">Jump to Top</a>
+		</nav>
+
+		<main>
+			<article>
+				<h1 class="center">Shopping Cart</h1>
+
+				<section id="cart">
+					<h2>Cart Items</h2>
+
+					<table>
+						<caption>Books in Shopping Cart</caption>
+
+						<colgroup>
+							<col span=3></col>
+						</colgroup>
+
+						<thead>
+							<th>Book Cover</th>
+							<th>Book Name</th>
+							<th>Price</th>
+						</thead>
+					</table>
+				</section>
+
+				<section>
+					<h2>Confirm Your Order</h2>
+
+					<article>
+						<table>
+							<caption>Total to be Paid</caption>
+
+							<colgroup>
+								<col span=2></col>
+							</colgroup>
+
+							<thead>
+								<th>Subtotal</th>
+								<th>Price</th>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Price of Items</td>
+									<td id="total">$0.00</td>
+								</tr>
+
+								<tr>
+									<td>9% Goods and Services Tax (GST)</td>
+									<td id="gst">$0.00</td>
+								</tr>
+
+								<tr>
+									<td>Total Payable</td>
+									<td id="payable">$0.00</td>
+								</tr>
+							</tbody>
+						</table>
+					</article>
+
+					<div style="text-align: right;"><a href="pay.html"><button><p>Proceed To Payment</p></button></a></div>
+				</section>
+			</article>
+		</main>
+	</body>
+</html>
