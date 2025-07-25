@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>BookShop - Home</title>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="../media/favicon.avif"/>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+
+		<style>
+		body {
+			/* make the white boxes pop out from the page background */
+			/* not used in more text-heavy pages, lest text unreadability */
+
+			/* white to greyish-blue gradient */
+			background-image: linear-gradient(to bottom, #fff, transparent);
+			background-color: #eef;
+
+			/* starts greying near the end of the header */
+			background-size: 100% 50vh;
+			background-repeat: no-repeat;
+		}
+
+		img {
+			aspect-ratio: 2/3;
+		}
+
+		img:hover, .box p a:hover {
+			border: 2px solid #448;
+		}
+
+		.box, .listings {
+			background-color: white;
+			box-shadow: 0 0 4px black;
+			border-radius: 8px;
+			padding: 1%;
+		}
+
+		.box, .listings h2, .listing {
+			margin: 2%;
+		}
+
+		.box {
+			background-color: white;
+			box-shadow: 0 0 4px black;
+			border-radius: 8px;
+
+			display: inline-block;
+			text-align: center;
+
+			width: 25%;
+			height: 32vh;
+			overflow: auto;
+		}
+
+		.box p {
+			text-align: center;
+		}
+
+		.box p a {
+			padding-inline: 25%;
+			padding-block: 2%;
+		}
+
+		.grid {
+			display: inline-block;
+		}
+
+		/* small icon-like img for grid */
+		.grid img {
+			height: 8vh;
+		}
+
+		.listings {
+			margin: 4%;
+		}
+
+		.scroll {
+			display: flex;
+			align-items: top;
+			overflow-x: auto;
+		}
+
+		.listing {
+			display: inline-block;
+			width: 10vw;
+		}
+
+		.listing img {
+			height: 25vh;
+		}
+
+		.listing p {
+			text-align: left;
+		}
+
+		.listing p a {
+			text-decoration: none;
+		}
+
+		.listing p a:any-link {
+			color: blue;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header id="top">
+			<nav>
+				<a href="index.html">HOME</a>
+				<a href="about.html">ABOUT</a>
+				<a href="cart.html">CART</a>
+			</nav>
+		</header>
+
+		<nav id="jump">
+			<a href="#top">Jump to Top</a>
+		</nav>
+
+		<main>
+			<h1 class="center">Welcome to BookShop!</h1>
+
+			<section class="center">
+				<article class="box">
+					<h2>Browse By Genre</h2>
+
+					<nav>
+						<p><a href="#scifi">Sci-Fi</a></p>
+						<p><a href="#fantasy">Fantasy</a></p>
+						<p><a href="#edu">Educational</a></p>
+						<p><a href="#kids">Kids</a></p>
+					</nav>
+				</article>
+
+				<article class="box">
+					<h2>Deals Under $15</h2>
+
+					<nav class="grid">
+						<a href="books/hitchhiker.html"><img src="../media/hitchhiker.jpg" alt="Book Cover"/></a>
+						<a href="books/matilda.html"><img src="../media/matilda.jpg" alt="Book Cover"/></a>
+						<a href="books/fish.html"><img src="../media/fish.jpg" alt="Book Cover"/></a>
+						<a href="books/restaurant.html"><img src="../media/restaurant.jpg" alt="Book Cover"/></a>
+						<a href="books/wimpy.html"><img src="../media/wimpy.jpg" alt="Book Cover"/></a>
+						<a href="books/harmless.html"><img src="../media/harmless.jpg" alt="Book Cover"/></a>
+					</nav>
+
+					<p><a href="#deals">Find more</a></p>
+				</article>
+
+				<article class="box">
+					<h2>New Book Arrivals</h2>
+
+					<nav class="grid">
+						<a href="books/necronomicon.html"><img src="../media/necronomicon.jpg" alt="Book Cover"/></a>
+						<a href="books/ultimate.html"><img src="../media/ultimate.jpg" alt="Book Cover"/></a>
+						<a href="books/wimpy.html"><img src="../media/wimpy.jpg" alt="Book Cover"/></a>
+						<a href="books/boey.html"><img src="../media/boey.jpg" alt="Book Cover"/></a>
+						<a href="books/charlie.html"><img src="../media/charlie.jpg" alt="Book Cover"/></a>
+						<a href="books/matilda.html"><img src="../media/matilda.jpg" alt="Book Cover"/></a>
+					</nav>
+
+					<p><a href="#new">See more</a></p>
+				</article>
+			</section>
+
+			<hr>
+
+			<section class="listings">
+				<h2 id="scifi">Sci-Fi</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/hitchhiker.html"><img src="../media/hitchhiker.jpg" alt="Book Cover"/></a>
+						<p><a href="books/hitchhiker.html">The Hitchhiker's Guide to the Galaxy</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$8.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/restaurant.html"><img src="../media/restaurant.jpg" alt="Book Cover"/></a>
+						<p><a href="books/restaurant.html">The Restaurant at the End of the Universe</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$10.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/life.html"><img src="../media/life.jpg" alt="Book Cover"/></a>
+						<p><a href="books/life.html">Life, the Universe and Everything</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/fish.html"><img src="../media/fish.jpg" alt="Book Cover"/></a>
+						<p><a href="books/fish.html">So Long, and Thanks for All the Fish</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/harmless.html"><img src="../media/harmless.jpg" alt="Book Cover"/></a>
+						<p><a href="books/harmless.html">Mostly Harmless</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/ultimate.html"><img src="../media/ultimate.jpg" alt="Book Cover"/></a>
+						<p><a href="books/ultimate.html">The Ultimate Hitchhiker's Guide to the Galaxy</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$20.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/necronomicon.html"><img src="../media/necronomicon.jpg" alt="Book Cover"/></a>
+						<p><a href="books/necronomicon.html">Necronomicon: The Best Authorrd Tales of H.P. Lovecraft</a></p>
+						<p>by H.P. Lovecraft</p>
+						<p><strong>$45.00</strong></p>
+					</article>
+				</div>
+			</section>
+
+			<section class="listings">
+				<h2 id="fantasy">Fantasy</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/necronomicon.html"><img src="../media/necronomicon.jpg" alt="Book Cover"/></a>
+						<p><a href="books/necronomicon.html">Necronomicon: The Best Authorrd Tales of H.P. Lovecraft</a></p>
+						<p>by H.P. Lovecraft</p>
+						<p><strong>$45.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/matilda.html"><img src="../media/matilda.jpg" alt="Book Cover"/></a>
+						<p><a href="books/matilda.html">Matilda</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlie.html"><img src="../media/charlie.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlie.html">Charlie and the Chocolate Factory</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/fox.html"><img src="../media/fox.jpg" alt="Book Cover"/></a>
+						<p><a href="books/fox.html">Fantastic Mr. Fox</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$17.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/bfg.html"><img src="../media/bfg.jpg" alt="Book Cover"/></a>
+						<p><a href="books/bfg.html">The BFG</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/twits.html"><img src="../media/twits.jpg" alt="Book Cover"/></a>
+						<p><a href="books/twits.html">The Twits</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$17.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/witches.html"><img src="../media/witches.jpg" alt="Book Cover"/></a>
+						<p><a href="books/witches.html">The Witches</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/james.html"><img src="../media/james.jpg" alt="Book Cover"/></a>
+						<p><a href="books/james.html">James and the Giant Peach</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/stuart.html"><img src="../media/stuart.jpg" alt="Book Cover"/></a>
+						<p><a href="books/stuart.html">Stuart Little</a></p>
+						<p>by E. B. White</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlotte.html"><img src="../media/charlotte.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlotte.html">Charlotte's Web</a></p>
+						<p>by E. B. White</p>
+						<p><strong>$7.99</strong></p>
+					</article>
+				</div>
+			</section>
+
+			<section class="listings">
+				<h2 id="edu">Educational</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/linalgintro.html"><img src="../media/linalgintro.jpg" alt="Book Cover"/></a>
+						<p><a href="books/linalgintro.html">Introduction to Linear Algebra, 5th Edition</a></p>
+						<p>by Gilbert Strang</p>
+						<p><strong>$99.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/linalgapp.html"><img src="../media/linalgapp.jpg" alt="Book Cover"/></a>
+						<p><a href="books/linalgapp.html">Linear Algebra and Its Applications, 4th Edition</a></p>
+						<p>by Gilbert Strang</p>
+						<p><strong>$149.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/linalgdata.html"><img src="../media/linalgdata.jpg" alt="Book Cover"/></a>
+						<p><a href="books/linalgdata.html">Linear Algebra and Learning from Data, First Edition</a></p>
+						<p>by Gilbert Strang</p>
+						<p><strong>$95.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/sicp.html"><img src="../media/sicp.jpg" alt="Book Cover"/></a>
+						<p><a href="books/sicp.html">Structure and Interpretation of Computer Programs - 2nd Edition</a></p>
+						<p>by Harold Abelson, Gerald Jay Sussman</p>
+						<p><strong>$75.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/csapp.html"><img src="../media/csapp.jpg" alt="Book Cover"/></a>
+						<p><a href="books/csapp.html">Computer Systems: A Programmer's Perspective, 3rd Edition</a></p>
+						<p>by Randal E. Bryant, David R. O’Hallaron</p>
+						<p><strong>$219.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/clang.html"><img src="../media/clang.jpg" alt="Book Cover"/></a>
+						<p><a href="books/clang.html">C Programming Language, 2nd Edition</a></p>
+						<p>by Brian W. Kernighan,  Dennis M. Ritchie</p>
+						<p><strong>$69.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/ddia.html"><img src="../media/ddia.jpg" alt="Book Cover"/></a>
+						<p><a href="books/ddia.html">Designing Data-Intensive Applications (1st Edition)</a></p>
+						<p>by Martin Kleppmann</p>
+						<p><strong>$59.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/mcs.html"><img src="../media/mcs.jpg" alt="Book Cover"/></a>
+						<p><a href="books/mcs.html">Mathematics for Computer Science</a></p>
+						<p>by Eric Lehman, F Thomson Leighton, Albert R Meyer</p>
+						<p><strong>$54.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/redbook.html"><img src="../media/redbook.jpg" alt="Book Cover"/></a>
+						<p><a href="books/redbook.html">Readings In Database Systems, 4th Edition</a></p>
+						<p>by Joseph M. Hellerstein, Michael Stonebraker</p>
+						<p><strong>$69.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/network.html"><img src="../media/network.jpg" alt="Book Cover"/></a>
+						<p><a href="books/network.html">Computer Networking: A Top-Down Approach - 7th Edition</a></p>
+						<p>by Jim Kurose, Keith Ross</p>
+						<p><strong>$109.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/ostep.html"><img src="../media/ostep.jpg" alt="Book Cover"/></a>
+						<p><a href="books/ostep.html">Operating Systems: Three Easy Pieces</a></p>
+						<p>by Remzi H Arpaci-Dusseau, Andrea C Arpaci-Dusseau</p>
+						<p><strong>$28.99</strong></p>
+					</article>
+				</div>
+			</section>
+
+			<section class="listings">
+				<h2 id="kids">Kids</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/wimpy.html"><img src="../media/wimpy.jpg" alt="Book Cover"/></a>
+						<p><a href="books/wimpy.html">Diary of a Wimpy Kid</a></p>
+						<p>by Jeff Kinney</p>
+						<p><strong>$14.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/boey.html"><img src="../media/boey.jpg" alt="Book Cover"/></a>
+						<p><a href="books/boey.html">When I Was a Kid: Childhood Stories by Boey</a></p>
+						<p>by Cheeming Boey</p>
+						<p><strong>$17.95</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/matilda.html"><img src="../media/matilda.jpg" alt="Book Cover"/></a>
+						<p><a href="books/matilda.html">Matilda</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlie.html"><img src="../media/charlie.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlie.html">Charlie and the Chocolate Factory</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/fox.html"><img src="../media/fox.jpg" alt="Book Cover"/></a>
+						<p><a href="books/fox.html">Fantastic Mr. Fox</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$17.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/bfg.html"><img src="../media/bfg.jpg" alt="Book Cover"/></a>
+						<p><a href="books/bfg.html">The BFG</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/twits.html"><img src="../media/twits.jpg" alt="Book Cover"/></a>
+						<p><a href="books/twits.html">The Twits</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$17.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/witches.html"><img src="../media/witches.jpg" alt="Book Cover"/></a>
+						<p><a href="books/witches.html">The Witches</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/james.html"><img src="../media/james.jpg" alt="Book Cover"/></a>
+						<p><a href="books/james.html">James and the Giant Peach</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/stuart.html"><img src="../media/stuart.jpg" alt="Book Cover"/></a>
+						<p><a href="books/stuart.html">Stuart Little</a></p>
+						<p>by E. B. White</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlotte.html"><img src="../media/charlotte.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlotte.html">Charlotte's Web</a></p>
+						<p>by E. B. White</p>
+						<p><strong>$7.99</strong></p>
+					</article>
+				</div>
+			</section>
+
+			<section class="listings">
+				<h2 id="deals">Deals Under $15</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/hitchhiker.html"><img src="../media/hitchhiker.jpg" alt="Book Cover"/></a>
+						<p><a href="books/hitchhiker.html">The Hitchhiker's Guide to the Galaxy</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$8.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/restaurant.html"><img src="../media/restaurant.jpg" alt="Book Cover"/></a>
+						<p><a href="books/restaurant.html">The Restaurant at the End of the Universe</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$10.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/life.html"><img src="../media/life.jpg" alt="Book Cover"/></a>
+						<p><a href="books/life.html">Life, the Universe and Everything</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/fish.html"><img src="../media/fish.jpg" alt="Book Cover"/></a>
+						<p><a href="books/fish.html">So Long, and Thanks for All the Fish</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/harmless.html"><img src="../media/harmless.jpg" alt="Book Cover"/></a>
+						<p><a href="books/harmless.html">Mostly Harmless</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$9.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/wimpy.html"><img src="../media/wimpy.jpg" alt="Book Cover"/></a>
+						<p><a href="books/wimpy.html">Diary of a Wimpy Kid</a></p>
+						<p>by Jeff Kinney</p>
+						<p><strong>$14.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlotte.html"><img src="../media/charlotte.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlotte.html">Charlotte's Web</a></p>
+						<p>by E. B. White</p>
+						<p><strong>$7.99</strong></p>
+					</article>
+				</div>
+			</section>
+
+			<section class="listings">
+				<h2 id="new">New Arrivals</h2>
+
+				<!-- separate heading to prevent it from scrolling with the listings -->
+				<div class="scroll">
+					<article class="listing">
+						<a href="books/necronomicon.html"><img src="../media/necronomicon.jpg" alt="Book Cover"/></a>
+						<p><a href="books/necronomicon.html">Necronomicon: The Best Authorrd Tales of H.P. Lovecraft</a></p>
+						<p>by H.P. Lovecraft</p>
+						<p><strong>$45.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/ultimate.html"><img src="../media/ultimate.jpg" alt="Book Cover"/></a>
+						<p><a href="books/ultimate.html">The Ultimate Hitchhiker's Guide to the Galaxy</a></p>
+						<p>by Douglas Adams</p>
+						<p><strong>$20.00</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/wimpy.html"><img src="../media/wimpy.jpg" alt="Book Cover"/></a>
+						<p><a href="books/wimpy.html">Diary of a Wimpy Kid</a></p>
+						<p>by Jeff Kinney</p>
+						<p><strong>$14.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/boey.html"><img src="../media/boey.jpg" alt="Book Cover"/></a>
+						<p><a href="books/boey.html">When I Was a Kid: Childhood Stories by Boey</a></p>
+						<p>by Cheeming Boey</p>
+						<p><strong>$17.95</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/charlie.html"><img src="../media/charlie.jpg" alt="Book Cover"/></a>
+						<p><a href="books/charlie.html">Charlie and the Chocolate Factory</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/matilda.html"><img src="../media/matilda.jpg" alt="Book Cover"/></a>
+						<p><a href="books/matilda.html">Matilda</a></p>
+						<p>by Roald Dahl</p>
+						<p><strong>$18.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/dsa.html"><img src="../media/dsa.jpg" alt="Book Cover"/></a>
+						<p><a href="books/dsa.html">The Algorithm Design Manual (Texts in Computer Science), Third Edition</a></p>
+						<p>by Steven S. Skiena</p>
+						<p><strong>$84.99</strong></p>
+					</article>
+
+					<article class="listing">
+						<a href="books/linalgdata.html"><img src="../media/linalgdata.jpg" alt="Book Cover"/></a>
+						<p><a href="books/linalgdata.html">Linear Algebra and Learning from Data, First Edition</a></p>
+						<p>by Gilbert Strang</p>
+						<p><strong>$95.00</strong></p>
+					</article>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
