@@ -15,6 +15,14 @@
 			margin-inline: 10%;
 			margin-block: 4%;
 		}
+
+		legend {
+			font-weight: bold;
+		}
+
+		.hide {
+			display: none;
+		}
 		</style>
 	</head>
 
@@ -35,29 +43,241 @@
 			<article>
 				<h1 class="center">Payment</h1>
 
-				<form method="post" onsubmit="paySuccess();">
+				<!-- using POST for securing sensitive info
+				so no query parameters in url
+				using alert() for feedback instead -->
+				<form method="post" autocomplete="on" onsubmit="paySuccess();">
 					<fieldset>
 						<legend>Personal Details</legend>
 
-						<p>Surname</p>
-						<input type="text" name="sname">
-						<p>Given Name</p>
-						<input type="text" name="gname">
+						<label>
+							<p>Surname</p>
+							<input
+								type="text"
+								name="sname"
+								autocomplete="given-name"
+								placeholder="John"
+								maxlength="50"
+								required
+							>
+						</label>
+
+						<label>
+							<p>Given Name</p>
+							<input
+								type="text"
+								name="gname"
+								autocomplete="family-name"
+								placeholder="Doe"
+								maxlength="50"
+								required
+							>
+						</label>
+
+						<label>
+							<p>E-mail Address</p>
+							<input
+								type="email"
+								name="email"
+								autocomplete="email"
+								placeholder="john.doe@email.com"
+								pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+								required
+							>
+						</label>
+
+						<label>
+							<p>Phone Number (Optional)</p>
+							<p>+65
+								<input
+									type="tel"
+									name="phone"
+									autocomplete="tel"
+									placeholder="8765 4321"
+									pattern="^\[3689]\d{3}[-\s]?\d{4}$"
+								>
+							</p>
+						</label>
 					</fieldset>
 
 					<fieldset>
 						<legend>Address Details</legend>
-						<p>Region</p>
-						<select>
-							<option>North</option>
-							<option>South</option>
-							<option>East</option>
-							<option>West</option>
-						</select>
+
+						<h2>Billing Address</h2>
+
+						<label>
+							<p>Street Address</p>
+							<input
+								type="text"
+								name="street"
+								autocomplete="address-line1"
+								placeholder="Blk 123 Clementi Ave 3"
+								required
+							>
+						</label>
+
+						<label>
+							<p>Unit Number</p> #
+							<input
+								type="text"
+								name="unit"
+								autocomplete="address-line2"
+								placeholder="09-123"
+								pattern="^\d{1,2}-\d{3}$"
+								required
+							>
+						</label>
+
+						<label>
+							<p>Postal Code</p>
+							<input
+								type="text"
+								name="postal"
+								autocomplete="postal-code"
+								placeholder="120123"
+								pattern="^\d{6}$"
+								required
+							>
+						</label>
+
+						<label>
+							<p>City</p>
+							<input
+								type="text"
+								name="city"
+								value="Singapore"
+								disabled
+							>
+						</label>
+
+						<h2>Shipping Address</h2>
+
+						<label><input type="checkbox" name="shipping" checked>Same as billing address</label>
+
+						<div id="shipFields" class="hide">
+							<label>
+								<p>Street Address</p>
+								<input
+									type="text"
+									name="shipstreet"
+									autocomplete="address-line1"
+									placeholder="Blk 123 Clementi Ave 3"
+								>
+							</label>
+
+							<label>
+								<p>Unit Number</p>
+								<input
+									type="text"
+									name="shipunit"
+									autocomplete="address-line2"
+									pattern="^\d{1,2}-\d{3}"
+									placeholder="#09-123"
+								>
+							</label>
+
+							<label>
+								<p>Postal Code</p>
+								<input
+									type="text"
+									name="shippostal"
+									autocomplete="postal-code"
+									placeholder="120123"
+									pattern="^\d{6}$"
+									maxlength="6"
+								>
+							</label>
+
+							<label>
+								<p>City</p>
+								<input
+									type="text"
+									name="shipcity"
+									value="Singapore"
+									disabled
+								>
+							</label>
+						</div>
 					</fieldset>
 
 					<fieldset>
 						<legend>Payment Details</legend>
+
+						<p>Payment Method</p>
+
+						<label><p><input type="radio" name="method" value="cash" required>Cash On Delivery</p></label>
+						<label><p><input type="radio" name="method" value="paynow" required>PayNow</p></label>
+						<label><p><input type="radio" name="method" value="card" required>Credit/Debit Card</p></label>
+
+						<div id="paynow" class="hide">
+							<label>
+								<p>Payment Reference (Optional)</p>
+								<input
+									type="text"
+									name="payref"
+									placeholder="BookShop Purchase With PayNow"
+								>
+							</label>
+						</div>
+
+						<div id="cardFields" class="hide">
+							<label>
+								<p>Cardholder Surname</p>
+								<input
+									type="text"
+									name="cardsname"
+									autocomplete="cc-family-name"
+									placeholder="John"
+									maxlength="50"
+								>
+							</label>
+
+							<label>
+								<p>Cardholder Given Name</p>
+								<input
+									type="text"
+									name="cardgname"
+									autocomplete="cc-given-name"
+									placeholder="Doe"
+									maxlength="50"
+								>
+							</label>
+
+							<label>
+								<p>Card Number</p>
+								<input
+									type="tel"
+									name="cardnum"
+									autocomplete="cc-number"
+									inputmode="numeric"
+									placeholder="1234 5678 9012 3456"
+									pattern="[0-9\s]{13,19}"
+								>
+							</label>
+
+							<label>
+								<p>Card Expiry Date</p>
+								<input
+									type="text"
+									name="cardexp"
+									placeholder="MM/YY"
+									pattern="(0[1-9]|1[0-2])\/\d{2}"
+									autocomplete="cc-exp"
+								>
+							</label>
+
+							<label>
+								<p>Card Verification Code</p>
+								<input
+									type="tel"
+									name="cardcode"
+									inputmode="numeric"
+									pattern="\d{3,4}"
+									autocomplete="cc-csc"
+									placeholder="123"
+								>
+							</label>
+						</div>
 					</fieldset>
 
 					<div class="center"><input type="submit" value="Submit"></div>
