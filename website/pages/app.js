@@ -1,3 +1,5 @@
+// remember to enable `script` in NoScript extension
+
 function paySuccess() {
 	// mock payment feedback
 	alert("Payment Successful. Thank you for your purchase!");

@@ -58,6 +58,7 @@
 								autocomplete="given-name"
 								placeholder="John"
 								maxlength="50"
+								autofocus
 								required
 							>
 						</label>
@@ -81,7 +82,7 @@
 								name="email"
 								autocomplete="email"
 								placeholder="john.doe@email.com"
-								pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+								pattern="^.+@.+[.].+$"
 								required
 							>
 						</label>
@@ -92,9 +93,11 @@
 								<input
 									type="tel"
 									name="phone"
+									inputmode="numeric"
 									autocomplete="tel"
 									placeholder="8765 4321"
-									pattern="^\[3689]\d{3}[-\s]?\d{4}$"
+									pattern="^[3689]\d{3}[ ]?\d{4}$"
+									title="There should be 8 digits, starting with 3, 6, 8, or 9 as the first digit"
 								>
 							</p>
 						</label>
