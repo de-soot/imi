@@ -599,7 +599,7 @@
 		let name = prompt("Enter your name");
 		let heading = document.getElementsByTagName("h1")[0];
 		
-		if(name != "") {
+		if(name != "" && name != null) {
 			heading.innerText = `Welcome To BookShop, ${name}!`;
 		}
 		</script>
