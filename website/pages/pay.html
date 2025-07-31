@@ -8,7 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="icon" type="image/png" href="../media/favicon.avif"/>
 		<link rel="stylesheet" type="text/css" href="styles.css"/>
-		<script src="app.js" async defer></script>
 
 		<style>
 		fieldset {
@@ -46,7 +45,7 @@
 				<!-- using POST for securing sensitive info
 				so no query parameters in url
 				using alert() for feedback instead -->
-				<form method="post" autocomplete="on" onsubmit="paySuccess();">
+				<form id="paymentForm" method="post" autocomplete="on" onsubmit="paySuccess();">
 					<fieldset>
 						<legend>Personal Details</legend>
 
@@ -157,12 +156,12 @@
 
 						<label><input type="checkbox" name="shipping" checked>Same as billing address</label>
 
-						<div id="shipFields" class="hide">
+						<div id="shippingDiv" class="hide">
 							<label>
 								<p>Street Address</p>
 								<input
 									type="text"
-									name="shipstreet"
+									name="shippingstreet"
 									autocomplete="address-line1"
 									placeholder="Blk 123 Clementi Ave 3"
 								>
@@ -172,7 +171,7 @@
 								<p>Unit Number</p>
 								<input
 									type="text"
-									name="shipunit"
+									name="shippingunit"
 									autocomplete="address-line2"
 									pattern="^\d{1,2}-\d{3}"
 									placeholder="#09-123"
@@ -183,7 +182,7 @@
 								<p>Postal Code</p>
 								<input
 									type="text"
-									name="shippostal"
+									name="shippingpostal"
 									autocomplete="postal-code"
 									placeholder="120123"
 									pattern="^\d{6}$"
@@ -195,7 +194,7 @@
 								<p>City</p>
 								<input
 									type="text"
-									name="shipcity"
+									name="shippingcity"
 									value="Singapore"
 									disabled
 								>
@@ -212,18 +211,18 @@
 						<label><p><input type="radio" name="method" value="paynow" required>PayNow</p></label>
 						<label><p><input type="radio" name="method" value="card" required>Credit/Debit Card</p></label>
 
-						<div id="paynow" class="hide">
+						<div id="paynowDiv" class="hide">
 							<label>
 								<p>Payment Reference (Optional)</p>
 								<input
 									type="text"
 									name="payref"
-									placeholder="BookShop Purchase With PayNow"
+									placeholder="PayNow Reference"
 								>
 							</label>
 						</div>
 
-						<div id="cardFields" class="hide">
+						<div id="cardDiv" class="hide">
 							<label>
 								<p>Cardholder Surname</p>
 								<input
@@ -287,5 +286,51 @@
 				</form>
 			</article>
 		</main>
+		
+		<script>
+		let paymentForm = document.getElementById("paymentForm");
+
+		// show fields for shipping address if checkbox for "same as billing address" is unchecked
+		// hide the fields if checkbox is checked
+
+		let shippingSame = paymentForm.elements["shipping"];
+		let shippingDiv = document.getElementById("shippingDiv");
+		let shippingFields = shippingDiv.getElementsByTagName("input");
+
+		shippingSame.addEventListener("change", function() {
+			let isSame = shippingSame.checked;
+
+			for(let field of shippingFields) {
+				field.required = !isSame;
+			}
+
+			shippingDiv.style.display = isSame ? "none" : "block";
+		});
+
+		// show relevant fields based on payment method radio button selection
+
+		let paymentMethod = paymentForm.elements["method"];
+
+		let paynowDiv = document.getElementById("paynowDiv");
+		let paynowFields = paynowDiv.getElementsByTagName("input");
+
+		let cardDiv = document.getElementById("cardDiv");
+		let cardFields = cardDiv.getElementsByTagName("input");
+
+		paymentMethod.forEach(method => {
+			method.addEventListener("change", function() {
+				let usePaynow = (paymentMethod.value == "paynow");
+				paynowDiv.style.display = usePaynow ? "block" : "none";
+
+				let useCard = (paymentMethod.value == "card");
+
+				for(let field of cardFields) {
+					field.required = useCard;
+				}
+
+				cardDiv.style.display = useCard ? "block" : "none";
+			});
+		});
+		</script>
 	</body>
 </html>
