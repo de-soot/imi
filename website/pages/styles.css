@@ -1,4 +1,4 @@
-/* get rid of spacing at the top of navbar */
+/* remove spacing at the top of navbar */
 html, body {
 	margin-block: 0;
 }
@@ -161,7 +161,11 @@ button {
 	padding-block: 0.5%;
 }
 
-input[type=submit] {
+#buy input[type=submit] {
+	padding: 5%;
+}
+
+#paymentForm input[type=submit] {
 	width: 20%;
 	padding: 1%;
 }
