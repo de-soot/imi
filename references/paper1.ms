@@ -79,6 +79,11 @@ Image and content used for ``Charlie and the Chocolate Factory'' book page.
 charlie
 .]
 .IP \(bu
+Image and content used for ``Fantastic Mr. Fox'' book page.
+.[
+fox
+.]
+.IP \(bu
 Image and content used for ``The BFG'' book page.
 .[
 bfg
