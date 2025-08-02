@@ -297,7 +297,7 @@
 		let shippingDiv = document.getElementById("shippingDiv");
 		let shippingFields = shippingDiv.getElementsByTagName("input");
 
-		shippingSame.addEventListener("change", function() {
+		shippingSame.onclick = () => {
 			let isSame = shippingSame.checked;
 
 			for(let field of shippingFields) {
@@ -305,7 +305,7 @@
 			}
 
 			shippingDiv.style.display = isSame ? "none" : "block";
-		});
+		};
 
 		// show relevant fields based on payment method radio button selection
 
@@ -317,8 +317,8 @@
 		let cardDiv = document.getElementById("cardDiv");
 		let cardFields = cardDiv.getElementsByTagName("input");
 
-		paymentMethod.forEach(method => {
-			method.addEventListener("change", function() {
+		for(let method of paymentMethod) {
+			method.onclick = () => {
 				let usePaynow = (paymentMethod.value == "paynow");
 				paynowDiv.style.display = usePaynow ? "block" : "none";
 
@@ -329,8 +329,8 @@
 				}
 
 				cardDiv.style.display = useCard ? "block" : "none";
-			});
-		});
+			};
+		};
 		</script>
 	</body>
 </html>
