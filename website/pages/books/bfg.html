@@ -33,9 +33,19 @@
 				<aside id="buy">
 					<h2>Buy This Book</h2>
 					<p>Price: <strong>$18.99</strong></p>
-					<button onclick="addItem();">
-						<p>Add to Cart</p>
-					</button>
+
+					<form id="buyForm" method="post" onsubmit="addItem(event);">
+						<!-- user needs to select json file due to restrictions browsers place on `file:///` -->
+						<input
+							type="file"
+							name="json"
+							accept=".json"
+							title="Select a JSON file to store cart item in"
+							required
+						>
+
+						<input type="submit" name="submit" value="Add To Cart">
+					</form>
 				</aside>
 
 				<section>
