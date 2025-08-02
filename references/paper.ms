@@ -184,11 +184,6 @@ Async and defer (for browsers that do not support async) attributes for the ``<s
 asyncdefer
 .]
 .IP \(bu
-Using addEventListener() to display and hide payment fields in `pay.html'.
-.[
-addeventlistener
-.]
-.IP \(bu
 Box shadows for boxes in homepage.
 .[
 boxshadow
