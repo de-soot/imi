@@ -13,6 +13,11 @@
 		img {
 			height: 16vh;
 		}
+
+		/* hide table before json file is loaded */
+		#cartTable {
+			display: none;
+		}
 		</style>
 	</head>
 
@@ -33,10 +38,31 @@
 			<article>
 				<h1 class="center">Shopping Cart</h1>
 
-				<section id="cart">
+				<noscript>
+					<p>This webpage requires JavaScript to function.</p>
+				</noscript>
+
+				<section>
 					<h2>Cart Items</h2>
 
-					<table>
+					<form id="cartForm" method="post" onsubmit="loadCart(event);">
+						<!-- user needs to select json file due to restrictions browsers place on `file:///` -->
+						<p>
+							<input
+								type="file"
+								name="json"
+								accept=".json"
+								title="Select a JSON file to load cart items from"
+								required
+							>
+						</p>
+
+						<p>
+							<input type="submit" name="submit" value="Load Cart Items">
+						</p>
+					</form>
+
+					<table id="cartTable">
 						<caption>Books in Shopping Cart</caption>
 
 						<colgroup>
@@ -47,14 +73,17 @@
 							<th>Book Cover</th>
 							<th>Book Name</th>
 							<th>Price</th>
+							<th>Quantity</th>
 						</thead>
 					</table>
 				</section>
 
+				<hr>
+
 				<section>
 					<h2>Confirm Your Order</h2>
 
-					<table>
+					<table id="totalTable">
 						<caption>Total to be Paid</caption>
 
 						<colgroup>
@@ -90,12 +119,57 @@
 		</main>
 
 		<script>
-		// add table rows of book cover url, title, price, and quantity using cartItems.innerHTML += `<tr><td>xyz</td> ...</tr>`
+		function loadCart(event) { // load json cart items onto page
+			event.preventDefault(); // prevent form submit from refreshing page
 
-		// calculate subtotals based on price and quantity of all books in cart on each quantity change
+			// get json file
+			const cartForm = document.getElementById("cartForm");
+			const fileInput = cartForm.elements["json"];
+			const file = fileInput.files[0];
+
+			// get tables
+			const cartTable = document.getElementById("cartTable");
+			const totalTable = document.getElementById("totalTable");
+
+			if(!file) { // show error and stop if no file
+				alert("ERROR: No file selected");
+				return;
+			}
+
+			const jsonReader = new FileReader();
+
+			jsonReader.onload = (jsonEvent) => { // triggers from `jsonReader.readAsText(file);`
+				let jsonData = [];
+
+				try {
+					// load json data if not null; create array if null
+					jsonData = JSON.parse(jsonEvent.target.result || "[]");
+				} catch(error) {
+					alert("ERROR! File is not JSON: " + error.name + ": " + error.message);
+					return;
+				}
+
+				if(!Array.isArray(jsonData)) {
+					alert("ERROR: JSON data is not an array");
+					return;
+				}
+
+				for(let book of jsonData) {
+					// retrieve book data
+					const bookTitle = book["title"];
+					const bookCover = book["img"];
+					const bookPrice = book["price"];
+					const bookQty = book["qty"];
+
+					// add table rows of book title, cover, price, and quantity by appending to innerHTML (cartTable.innerHTML += `<tr><td>xyz</td> ...</tr>`)
+
+					// calculate subtotals based on price and quantity of all books in cart on each quantity change
+				}
+			}
+		}
 
 		function proceed() {
-			// check if cart is empty before proceeding to payment
+			// make sure payable is above 0 before proceeding to payment
 		}
 		</script>
 	</body>

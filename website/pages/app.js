@@ -1,14 +1,10 @@
 // remember to allow `script` for `file:///` in NoScript extension
 
-function addItem() { // add to cart item; triggered by submit button on every book page
+function addItem(event) { // add to cart item; triggered by submit button on every book page
 	event.preventDefault(); // prevent form submit from refreshing page
 
-	// get add to cart button element from each book page
-	const buyForm = document.getElementById("buyForm");
-	const button = buyForm.elements["submit"];
+	// get book cover, title, price, and quantity (default: 1) to store in JSON for retrieving and displaying in cart page later
 	const buyBox = document.getElementById("buy");
-
-	// get book cover, title, price, and quantity (default: 1) to retrieve and display in cart page
 	const bookTitle = document.getElementsByTagName("h1")[0].innerText;
 	const bookCover = document.getElementsByTagName("img")[0].src;
 	const bookPrice = buyBox.getElementsByTagName("p")[0].innerText.substring(7); // get $XX.XX substring
@@ -16,6 +12,7 @@ function addItem() { // add to cart item; triggered by submit button on every bo
 
 	// using JSON instead of localStorage or cookies because of browser restrictions on `file:///`
 	// think of it as an 'intended feature' where the user can have multiple carts
+	const buyForm = document.getElementById("buyForm");
 	const fileInput = buyForm.elements["json"];
 	const file = fileInput.files[0];
 
@@ -33,7 +30,7 @@ function addItem() { // add to cart item; triggered by submit button on every bo
 			// load json data if not null; create array if null
 			jsonData = JSON.parse(jsonEvent.target.result || "[]");
 		} catch(error) {
-			alert("ERROR! File is not JSON: " + error.message);
+			alert("ERROR! File is not JSON: " + error.name + ": " + error.message);
 			return;
 		}
 
@@ -42,15 +39,15 @@ function addItem() { // add to cart item; triggered by submit button on every bo
 			return;
 		}
 
-		// add data to array
-		for(let book of jsonData) {
+		for(let book of jsonData) { // check for duplicate entries
 			if(bookTitle == book["title"]) {
-				alert("Book already in cart; adjust quantity in cart page");
+				alert(bookTitle + " is already in the cart; adjust quantity in the cart page");
 				return;
 			}
-
-			jsonData.push({"title": bookTitle, "img": bookCover, "price": bookPrice, "qty": bookQty});
 		}
+
+		// add data to array
+		jsonData.push({"title": bookTitle, "img": bookCover, "price": bookPrice, "qty": bookQty});
 
 		// convert to string (pretty printing) to be stored in blob json file
 		const jsonString = JSON.stringify(jsonData, null, 2);
@@ -80,6 +77,7 @@ function addItem() { // add to cart item; triggered by submit button on every bo
 	jsonReader.readAsText(file); // triggers the above code
 
 	// give visual feedback on button click and successful function call
+	const button = buyForm.elements["submit"];
 	button.value = "Added to Cart";
 	button.style.backgroundColor = "green";
 	button.style.color = "white";
