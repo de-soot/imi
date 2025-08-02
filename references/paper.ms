@@ -169,14 +169,14 @@ Image and content used for ``Operating Systems: Three Easy Pieces'' book page.
 ostep
 .]
 .IP \(bu
-Async and defer (for browsers that do not support async) attributes for the ``<script>'' tag.
-.[
-asyncdefer
-.]
-.IP \(bu
 Using localStorage to store name user types in prompt in `index.html' homepage.
 .[
 localstorage
+.]
+.IP \(bu
+Async and defer (for browsers that do not support async) attributes for the ``<script>'' tag.
+.[
+asyncdefer
 .]
 .IP \(bu
 Using addEventListener() to display and hide payment fields in `pay.html'.
