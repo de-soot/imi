@@ -168,16 +168,16 @@
 					// retrieve book title from json
 					let bookTitle = book["title"];
 
-					let inCart = false;
+					let inCartTable = false;
 					
 					for(let row of cartBody.children) { // check if book is already in table
 						if(bookTitle == row.getElementsByTagName("td")[1].innerText) {
-							inCart = true;
+							inCartTable = true;
 							break;
 						}
 					}
 
-					if(inCart) { break; }
+					if(inCartTable) { continue; }
 
 					// retrieve other book data
 					let bookCover = book["img"];
