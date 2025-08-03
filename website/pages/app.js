@@ -9,6 +9,7 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 	const bookCover = document.getElementsByTagName("img")[0].src;
 	const bookPrice = buyBox.getElementsByTagName("p")[0].innerText.substring(7); // get $XX.XX substring
 	const bookQty = 1;
+	const bookUrl = window.location.href; // get url of book page
 
 	// using JSON instead of localStorage or cookies because of browser restrictions on `file:///`
 	// think of it as an 'intended feature' where the user can have multiple carts
@@ -41,13 +42,13 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 
 		for(let book of jsonData) { // check for duplicate entries
 			if(bookTitle == book["title"]) {
-				alert(bookTitle + " is already in the cart; adjust quantity in the cart page");
+				alert(bookTitle + " is already in the cart\nAdjust quantity in the cart page");
 				return;
 			}
 		}
 
 		// add data to array
-		jsonData.push({"title": bookTitle, "img": bookCover, "price": bookPrice, "qty": bookQty});
+		jsonData.push({"title": bookTitle, "img": bookCover, "price": bookPrice, "qty": bookQty, "url": bookUrl});
 
 		// convert to string (pretty printing) to be stored in blob json file
 		const jsonString = JSON.stringify(jsonData, null, 2);
@@ -76,7 +77,7 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 
 	jsonReader.readAsText(file); // triggers the above code
 
-	// give visual feedback on button click and successful function call
+	// give visual feedback on successful function call
 	const button = buyForm.elements["submit"];
 	button.value = "Added to Cart";
 	button.style.backgroundColor = "green";
@@ -84,4 +85,13 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 	button.style.fontAuthorght = "bold";
 	button.style.border = "2px solid darkgreen";
 	button.style.borderRadius = "4px";
+
+	setTimeout(() => { // return button style back to default after 1s and change text to remove item
+		button.value = "Remove from Cart";
+		button.style.backgroundColor = "revert";
+		button.style.color = "revert";
+		button.style.fontAuthorght = "revert";
+		button.style.border = "revert";
+		button.style.borderRadius = "revert";
+	}, 500);
 }

@@ -1,32 +1,23 @@
 [
   {
-    "title": "The BFG",
-    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/bfg.jpg",
-    "price": "$18.99",
-    "qty": 1
-  },
-  {
-    "title": "Charlie and the Chocolate Factory",
-    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/charlie.jpg",
-    "price": "$18.99",
-    "qty": 1
-  },
-  {
-    "title": "Necronomicon: The Best Authorrd Tales of H.P. Lovecraft",
-    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/necronomicon.jpg",
-    "price": "$45.00",
-    "qty": 1
-  },
-  {
     "title": "Structure and Interpretation of Computer Programs - 2nd Edition",
     "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/sicp.jpg",
     "price": "$75.00",
-    "qty": 1
+    "qty": 1,
+    "url": "file:///home/wwc/Documents/school/imi/assignment/submission/website/pages/books/sicp.html"
   },
   {
-    "title": "The Hitchhiker's Guide to the Galaxy",
-    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/hitchhiker.jpg",
-    "price": "$8.99",
-    "qty": 1
+    "title": "The BFG",
+    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/bfg.jpg",
+    "price": "$18.99",
+    "qty": 1,
+    "url": "file:///home/wwc/Documents/school/imi/assignment/submission/website/pages/books/bfg.html"
+  },
+  {
+    "title": "C Programming Language, 2nd Edition",
+    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/clang.jpg",
+    "price": "$69.99",
+    "qty": 1,
+    "url": "file:///home/wwc/Documents/school/imi/assignment/submission/website/pages/books/clang.html"
   }
 ]
