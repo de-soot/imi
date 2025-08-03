@@ -156,16 +156,16 @@
 
 				for(let book of jsonData) {
 					// retrieve book data
-					const bookTitle = book["title"];
-					const bookCover = book["img"];
-					const bookPrice = book["price"];
-					const bookQty = book["qty"];
+					let bookTitle = book["title"];
+					let bookCover = book["img"];
+					let bookPrice = book["price"];
+					let bookQty = book["qty"];
 
 					// add table rows of book title, cover, price, and quantity by appending to innerHTML (cartTable.innerHTML += `<tr><td>xyz</td> ...</tr>`)
-
-					// calculate subtotals based on price and quantity of all books in cart on each quantity change
 				}
 			}
+
+			// calculate subtotals based on price * quantity of all books in cart on each quantity change
 		}
 
 		function proceed() {
