@@ -152,12 +152,12 @@ col {
 	border: 1px solid black;
 }
 
-button {
+#proceed {
 	padding-inline: 2%;
 	padding-block: 0.5%;
 }
 
-button, #buy input[type=submit] {
+#proceed, #buy input[type=submit] {
 	margin: 10%;
 }
 

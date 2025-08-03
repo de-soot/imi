@@ -11,12 +11,16 @@
 
 		<style>
 		img {
-			height: 16vh;
+			height: 8vh;
 		}
 
-		/* hide table before json file is loaded */
 		#cartTable {
+			/* hide table before json file is loaded */
 			display: none;
+		}
+
+		#cartTable colgroup {
+			width: 16vw;
 		}
 		</style>
 	</head>
@@ -62,11 +66,13 @@
 						</p>
 					</form>
 
+					<button onclick="clearCart();">Clear Cart</button>
+
 					<table id="cartTable">
 						<caption>Books in Shopping Cart</caption>
 
 						<colgroup>
-							<col span=3></col>
+							<col span=4></col>
 						</colgroup>
 
 						<thead>
@@ -75,6 +81,10 @@
 							<th>Price</th>
 							<th>Quantity</th>
 						</thead>
+
+						<tbody>
+							<!-- cart items go below here -->
+						</tbody>
 					</table>
 				</section>
 
@@ -114,7 +124,7 @@
 					</table>
 				</section>
 
-				<div style="text-align: right;"><a href="pay.html"><button><p>Proceed To Payment</p></button></a></div>
+				<div style="text-align: right;"><a href="pay.html"><button id="proceed"><p>Proceed To Payment</p></button></a></div>
 			</article>
 		</main>
 
@@ -128,8 +138,9 @@
 			const file = fileInput.files[0];
 
 			// get tables
-			const cartTable = document.getElementById("cartTable");
-			const totalTable = document.getElementById("totalTable");
+			let cartTable = document.getElementById("cartTable");
+			let cartBody = cartTable.getElementsByTagName("tbody")[0];
+			let totalTable = document.getElementById("totalTable");
 
 			if(!file) { // show error and stop if no file
 				alert("ERROR: No file selected");
@@ -142,10 +153,9 @@
 				let jsonData = [];
 
 				try {
-					// load json data if not null; create array if null
-					jsonData = JSON.parse(jsonEvent.target.result || "[]");
+					jsonData = JSON.parse(jsonEvent.target.result);
 				} catch(error) {
-					alert("ERROR! File is not JSON: " + error.name + ": " + error.message);
+					alert("ERROR: File is either empty or not JSON.\n" + error.name + ".\n" + error.message);
 					return;
 				}
 
@@ -155,17 +165,57 @@
 				}
 
 				for(let book of jsonData) {
-					// retrieve book data
+					// retrieve book title from json
 					let bookTitle = book["title"];
+
+					let inCart = false;
+					
+					for(row of cartBody.children) { // check if book is already in table
+						if(bookTitle == row.getElementsByTagName("td")[1].innerText) {
+							inCart = true;
+							break;
+						}
+					}
+
+					if(inCart) { break; }
+
+					// retrieve other book data
 					let bookCover = book["img"];
 					let bookPrice = book["price"];
 					let bookQty = book["qty"];
 
-					// add table rows of book title, cover, price, and quantity by appending to innerHTML (cartTable.innerHTML += `<tr><td>xyz</td> ...</tr>`)
+					// add table rows of book title, cover, price, and quantity
+					cartBody.innerHTML += `
+						<tr>
+							<td><img src="${bookCover}" alt="Book Cover"></td>
+							<td>${bookTitle}</td>
+							<td>${bookPrice}</td>
+							<td><input type="number" inputmode="numeric" value="${bookQty}"</td>
+						</tr>
+					`
 				}
+
+				cartTable.style.display = "block";
 			}
 
-			// calculate subtotals based on price * quantity of all books in cart on each quantity change
+			jsonReader.readAsText(file);
+
+			// calculate subtotals by totalling `${price * quantity}` of all books in cart onchange of qty
+		}
+
+		function clearCart() {
+			let cartTable = document.getElementById("cartTable");
+			let cartBody = cartTable.getElementsByTagName("tbody")[0];
+
+			// reset cartBody
+			cartBody.innerHTML = `
+				<tbody>
+					<!-- cart items go below here -->
+				</tbody>
+			`
+
+			// hide cart table
+			cartTable.style.display = "none";
 		}
 
 		function proceed() {

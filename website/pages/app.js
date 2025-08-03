@@ -30,7 +30,7 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 			// load json data if not null; create array if null
 			jsonData = JSON.parse(jsonEvent.target.result || "[]");
 		} catch(error) {
-			alert("ERROR! File is not JSON: " + error.name + ": " + error.message);
+			alert("ERROR: File is not JSON.\n" + error.name + ".\n" + error.message);
 			return;
 		}
 
