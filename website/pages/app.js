@@ -9,7 +9,7 @@ function addItem(event) { // add item to cart; triggered by submit button on eve
 	const bookCover = document.getElementsByTagName("img")[0].src;
 	const bookPrice = buyBox.getElementsByTagName("p")[0].innerText.substring(7); // get $XX.XX substring
 	const bookQty = 1;
-	const bookUrl = window.location.href; // get url of book page
+	const bookUrl = location.href; // get url of book page
 
 	// using JSON instead of localStorage or cookies because of browser restrictions on `file:///`
 	// think of it as an 'intended feature' where the user can have multiple carts
