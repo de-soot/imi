@@ -190,7 +190,7 @@
 							<td><img src="${bookCover}" alt="Book Cover"></td>
 							<td>${bookTitle}</td>
 							<td>${bookPrice}</td>
-							<td><input type="number" oninput="updateTotals();" inputmode="numeric" value="${bookQty}" min="1" max="9"></td>
+							<td><input type="number" oninput="updateTotals();" inputmode="numeric" value="${bookQty}" min="0" max="9"></td>
 						</tr>
 					`
 				}
@@ -224,13 +224,23 @@
 			for(let row of cartRows) {
 				let cols = row.getElementsByTagName("td");
 
-				let priceStr = cols[2].innerText;
-				let price = parseFloat(priceStr.substring(1));
-
 				let qtyInput = cols[3].getElementsByTagName("input")[0];
 				let qty = qtyInput.value;
 
+				if(qty < 1) {
+					row.remove();
+					continue;
+				}
+
+				let priceStr = cols[2].innerText;
+				let price = parseFloat(priceStr.substring(1));
+
 				priceSum += (price * qty);
+			}
+
+			if(cartRows.length < 1) {
+				cartTable.style.display = "none";
+				return;
 			}
 
 			// calculate 9% gst tax and truncate to 2 decimal places
@@ -239,7 +249,7 @@
 			// sum price and tax for payable
 			let payable = (priceSum + tax);
 
-			// set to new values
+			// set subtotals to new values
 			document.getElementById("total").innerText = `$${priceSum.toFixed(2)}`;
 			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
 			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
