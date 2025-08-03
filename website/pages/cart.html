@@ -245,7 +245,7 @@
 			}
 
 			// calculate 9% gst tax and truncate to 2 decimal places
-			let tax = Math.trunc(priceSum * 0.09 * 100) / 100;
+			let tax = Math.trunc((priceSum * 0.09) * 100) / 100;
 
 			// sum price and tax for payable
 			let payable = (priceSum + tax);
@@ -254,10 +254,6 @@
 			document.getElementById("total").innerText = `$${priceSum.toFixed(2)}`;
 			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
 			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
-		}
-
-		function proceed() {
-			// make sure payable is above 0 before proceeding to payment
 		}
 		</script>
 	</body>
