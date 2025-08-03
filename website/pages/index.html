@@ -601,12 +601,12 @@
 		let heading = document.getElementsByTagName("h1")[0];
 
 		// its annoying to get prompted every time homepage is opened
-		if(name === null) {
+		if(name == null) {
 			name = prompt("Enter your name");
 			localStorage.setItem("name", name);
 		}
 		
-		if(name !== "" && name !== null) {
+		if(name != "" && name != null && name != "null") {
 			heading.innerText = `Welcome To BookShop, ${name}!`;
 		}
 		</script>
