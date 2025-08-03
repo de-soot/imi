@@ -1,6 +1,6 @@
 // remember to allow `script` for `file:///` in NoScript extension
 
-function addItem(event) { // add to cart item; triggered by submit button on every book page
+function addItem(event) { // add item to cart; triggered by submit button on every book page
 	event.preventDefault(); // prevent form submit from refreshing page
 
 	// get book cover, title, price, and quantity (default: 1) to store in JSON for retrieving and displaying in cart page later
@@ -85,13 +85,4 @@ function addItem(event) { // add to cart item; triggered by submit button on eve
 	button.style.fontAuthorght = "bold";
 	button.style.border = "2px solid darkgreen";
 	button.style.borderRadius = "4px";
-
-	setTimeout(() => { // return button style back to default after 1s and change text to remove item
-		button.value = "Remove from Cart";
-		button.style.backgroundColor = "revert";
-		button.style.color = "revert";
-		button.style.fontAuthorght = "revert";
-		button.style.border = "revert";
-		button.style.borderRadius = "revert";
-	}, 500);
 }
