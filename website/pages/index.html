@@ -597,10 +597,11 @@
 		</main>
 
 		<script>
+		// its annoying to get prompted every time homepage is opened
+		// so store user input in localstorage and load it if not null
 		let name = localStorage.getItem("name");
 		let heading = document.getElementsByTagName("h1")[0];
 
-		// its annoying to get prompted every time homepage is opened
 		if(name == null) {
 			name = prompt("Enter your name");
 			localStorage.setItem("name", name);

@@ -113,7 +113,7 @@
 
 							<tr>
 								<td>9% Goods and Services Tax (GST)</td>
-								<td id="gst">$0.00</td>
+								<td id="tax">$0.00</td>
 							</tr>
 
 							<tr>
@@ -129,6 +129,11 @@
 		</main>
 
 		<script>
+		// get cart table
+		let cartTable = document.getElementById("cartTable");
+		let cartBody = cartTable.getElementsByTagName("tbody")[0];
+		let cartRows = cartBody.children;
+
 		function loadCart(event) { // load json cart items onto page
 			event.preventDefault(); // prevent form submit from refreshing page
 
@@ -136,11 +141,6 @@
 			const cartForm = document.getElementById("cartForm");
 			const fileInput = cartForm.elements["json"];
 			const file = fileInput.files[0];
-
-			// get tables
-			let cartTable = document.getElementById("cartTable");
-			let cartBody = cartTable.getElementsByTagName("tbody")[0];
-			let totalTable = document.getElementById("totalTable");
 
 			if(!file) { // show error and stop if no file
 				alert("ERROR: No file selected");
@@ -170,7 +170,7 @@
 
 					let inCart = false;
 					
-					for(row of cartBody.children) { // check if book is already in table
+					for(let row of cartBody.children) { // check if book is already in table
 						if(bookTitle == row.getElementsByTagName("td")[1].innerText) {
 							inCart = true;
 							break;
@@ -184,29 +184,28 @@
 					let bookPrice = book["price"];
 					let bookQty = book["qty"];
 
-					// add table rows of book title, cover, price, and quantity
+					// add table rows of book title, cover, price, and quantity in cart table
 					cartBody.innerHTML += `
 						<tr>
 							<td><img src="${bookCover}" alt="Book Cover"></td>
 							<td>${bookTitle}</td>
 							<td>${bookPrice}</td>
-							<td><input type="number" inputmode="numeric" value="${bookQty}" min="0" max="9"></td>
+							<td><input type="number" oninput="updateTotals();" inputmode="numeric" value="${bookQty}" min="1" max="9"></td>
 						</tr>
 					`
 				}
 
+				// show cart table
 				cartTable.style.display = "block";
+
+				// update subtotal values
+				updateTotals();
 			}
 
-			jsonReader.readAsText(file);
-
-			// calculate subtotals by totalling `${price * quantity}` of all books in cart onchange of qty
+			jsonReader.readAsText(file); // triggers the above jsonReader.onload code
 		}
 
 		function clearCart() {
-			let cartTable = document.getElementById("cartTable");
-			let cartBody = cartTable.getElementsByTagName("tbody")[0];
-
 			// reset cartBody
 			cartBody.innerHTML = `
 				<tbody>
@@ -216,6 +215,34 @@
 
 			// hide cart table
 			cartTable.style.display = "none";
+		}
+
+		function updateTotals() {
+			// get prices of all books in cart and sum them
+			let priceSum = 0.00;
+
+			for(let row of cartRows) {
+				let cols = row.getElementsByTagName("td");
+
+				let priceStr = cols[2].innerText;
+				let price = parseFloat(priceStr.substring(1));
+
+				let qtyInput = cols[3].getElementsByTagName("input")[0];
+				let qty = qtyInput.value;
+
+				priceSum += (price * qty);
+			}
+
+			// calculate 9% gst tax and truncate to 2 decimal places
+			let tax = Math.trunc(priceSum * 0.09 * 100) / 100;
+
+			// sum price and tax for payable
+			let payable = (priceSum + tax);
+
+			// set to new values
+			document.getElementById("total").innerText = `$${priceSum.toFixed(2)}`;
+			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
+			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
 		}
 
 		function proceed() {
