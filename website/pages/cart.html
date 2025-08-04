@@ -239,6 +239,8 @@
 			// get prices of all books in cart and sum them
 			let priceSum = 0.00;
 
+			// for .. of doesnt work when removing elements while looping
+			// as it doesnt allow i--;
 			for(let i = 0; i < cartRows.length; i++) {
 				let cols = cartRows[i].getElementsByTagName("td");
 
