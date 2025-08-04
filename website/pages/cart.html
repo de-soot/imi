@@ -221,21 +221,33 @@
 				</tbody>
 			`
 
-			hideCart();
+			hideCart(); // hide whole after tbody is gone
+			clearTotals(); // clear subtotals along with cart
+		}
+
+		function setTotals(total, tax, payable) {
+			document.getElementById("total").innerText = `$${total.toFixed(2)}`;
+			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
+			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
+		}
+
+		function clearTotals() {
+			setTotals(0, 0, 0);
 		}
 
 		function updateTotals() {
 			// get prices of all books in cart and sum them
 			let priceSum = 0.00;
 
-			for(let row of cartRows) {
-				let cols = row.getElementsByTagName("td");
+			for(let i = 0; i < cartRows.length; i++) {
+				let cols = cartRows[i].getElementsByTagName("td");
 
 				let qtyInput = cols[3].getElementsByTagName("input")[0];
 				let qty = qtyInput.value;
 
 				if(qty < 1) {
-					row.remove();
+					cartRows[i].remove();
+					i--;
 					continue;
 				}
 
@@ -247,7 +259,6 @@
 
 			if(cartRows.length < 1) {
 				hideCart();
-				return;
 			}
 
 			// calculate 9% gst tax and truncate to 2 decimal places
@@ -256,10 +267,7 @@
 			// sum price and tax for payable
 			let payable = (priceSum + tax);
 
-			// set subtotals to new values
-			document.getElementById("total").innerText = `$${priceSum.toFixed(2)}`;
-			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
-			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
+			setTotals(priceSum, tax, payable);
 		}
 
 		function showCart() {
