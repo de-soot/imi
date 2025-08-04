@@ -19,5 +19,12 @@
     "price": "$69.99",
     "qty": 1,
     "url": "file:///home/wwc/Documents/school/imi/assignment/submission/website/pages/books/clang.html"
+  },
+  {
+    "title": "Designing Data-Intensive Applications (1st Edition)",
+    "img": "file:///home/wwc/Documents/school/imi/assignment/submission/website/media/ddia.jpg",
+    "price": "$59.99",
+    "qty": 1,
+    "url": "file:///home/wwc/Documents/school/imi/assignment/submission/website/pages/books/ddia.html"
   }
 ]
