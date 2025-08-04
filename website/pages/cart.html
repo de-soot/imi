@@ -14,13 +14,18 @@
 			height: 8vh;
 		}
 
-		#cartTable {
+		#cartTable, #proceed {
 			/* hide table before json file is loaded */
+			/* hide proceed button before cart is loaded */
 			display: none;
 		}
 
 		#cartTable colgroup {
 			width: 16vw;
+		}
+
+		#proceed {
+			text-align: right;
 		}
 		</style>
 	</head>
@@ -62,11 +67,11 @@
 						</p>
 
 						<p>
-							<input type="submit" name="submit" value="Load Cart Items">
+							<input type="submit" name="submit" value="Load Cart Items" class="bigger">
 						</p>
 					</form>
 
-					<button onclick="clearCart();">Clear Cart</button>
+					<button class="bigger" onclick="clearCart();">Clear Cart</button>
 
 					<table id="cartTable">
 						<caption>Books in Shopping Cart</caption>
@@ -124,7 +129,7 @@
 					</table>
 				</section>
 
-				<div style="text-align: right;"><a href="pay.html"><button id="proceed"><p>Proceed To Payment</p></button></a></div>
+				<div id="proceed"><a href="pay.html"><button><p>Proceed To Payment</p></button></a></div>
 			</article>
 		</main>
 
@@ -133,6 +138,9 @@
 		let cartTable = document.getElementById("cartTable");
 		let cartBody = cartTable.getElementsByTagName("tbody")[0];
 		let cartRows = cartBody.children;
+
+		// get proceed button (only shown when cart is loaded)
+		let proceed = document.getElementById("proceed");
 
 		function loadCart(event) { // load json cart items onto page
 			event.preventDefault(); // prevent form submit from refreshing page
@@ -196,8 +204,7 @@
 					`
 				}
 
-				// show cart table
-				cartTable.style.display = "block";
+				showCart();
 
 				// update subtotal values
 				updateTotals();
@@ -214,8 +221,7 @@
 				</tbody>
 			`
 
-			// hide cart table
-			cartTable.style.display = "none";
+			hideCart();
 		}
 
 		function updateTotals() {
@@ -240,7 +246,7 @@
 			}
 
 			if(cartRows.length < 1) {
-				cartTable.style.display = "none";
+				hideCart();
 				return;
 			}
 
@@ -254,6 +260,20 @@
 			document.getElementById("total").innerText = `$${priceSum.toFixed(2)}`;
 			document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
 			document.getElementById("payable").innerText = `$${payable.toFixed(2)}`;
+		}
+
+		function showCart() {
+			// hide cart table
+			cartTable.style.display = "block";
+			// hide proceed button
+			proceed.style.display = "block";		
+		}
+
+		function hideCart() {
+			// hide cart table
+			cartTable.style.display = "none";
+			// hide proceed button
+			proceed.style.display = "none";		
 		}
 		</script>
 	</body>
