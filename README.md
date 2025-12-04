@@ -7,13 +7,13 @@
 # Reference List
 - File located in `./references`
 
-# Pages
+# Main Pages
 
 ## Homepage
 - `./website/pages/index.html`
 
 ## Books
-- Book pages located under `./website/pages/books` folder
+- Individual book HTML pages are located under `./website/pages/books` folder
 
 ## About
 - `./website/pages/about.html`
@@ -24,5 +24,5 @@
 ## Payment
 - `./website/pages/pay.html`
 
-# Media
+# Media Used by Pages
 - Under `./website/media` folder
