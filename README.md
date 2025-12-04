@@ -1,5 +1,5 @@
 # Reference List
-- File located in `./references/References.pdf`
+- File located in `./references`
 
 # Pages
 
