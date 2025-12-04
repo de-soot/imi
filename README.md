@@ -1,4 +1,4 @@
-# Mock BookStore Website
+# Mock Bookstore Website
 Website made with plain HTML/CSS/JS for a course assignment.
 
 ## Why Use JSON I/O for Cart Data Instead of localStorage?
