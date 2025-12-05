@@ -7,9 +7,6 @@ Mock web application made with plain HTML/CSS/JS for a course assignment.
 - JSON files can be saved by the user and loaded from their filesystem, so it is used as a workaround
 - Maybe `localStorage` would have worked if the pages were hosted on Github Pages, but that did not fit the assignment submission format criteria
 
-## Reference List
-- File located in `./references`
-
 ## Main Pages
 
 ### Homepage
@@ -17,15 +14,22 @@ Mock web application made with plain HTML/CSS/JS for a course assignment.
 
 ### Books
 - Individual book HTML pages are located under `./website/pages/books` folder
+- Find where book data was sourced from in [Reference List](#reflist)
 
 ### About
+- An imaginary company's about page
 - `./website/pages/about.html`
 
 ### Cart
+- Loads cart data from JSON file that user inputs
 - `./website/pages/cart.html`
 
-### Payment (Mock)
+### Payment
+- Does not actually work; it is a mock-up
 - `./website/pages/pay.html`
 
 ## Media Used
 - Under `./website/media` folder
+
+## Reference List<a name="reflist"></a>
+- File located in `./references`
