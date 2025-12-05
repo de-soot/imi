@@ -20,7 +20,7 @@ join-authors " & " ", " " & " # Change default "and" to ampersand (&) when joini
 .TL
 IMI Individual Assignment
 .AU
-Author
+Author (REDACTED)
 .SH
 Citations
 .IP \(bu
