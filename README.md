@@ -1,5 +1,5 @@
-# Mock Bookstore Website
-Website made with plain HTML/CSS/JS for a course assignment.
+# Mock Bookstore Web App
+Mock web application made with plain HTML/CSS/JS for a course assignment.
 
 ## Why Use JSON I/O for Cart Data Instead of localStorage?
 - Pages are loaded from filesystem, so `localStorage` is separated per file instead of per domain (different if this was hosted on a proper website)
