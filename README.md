@@ -24,7 +24,7 @@ Mock web application made with plain HTML/CSS/JS for a course assignment.
 ### Cart
 - `./website/pages/cart.html`
 
-### Payment
+### Payment (Mock)
 - `./website/pages/pay.html`
 
 ## Media Used
